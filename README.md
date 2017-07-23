@@ -26,7 +26,7 @@ buildpacks:
 
 - The multi-buildpack will download + run all the buildpacks in this list in the specified order.
 
-- It will use the app start command given by the last buildpack run.
+- It will use the app start command given by the last buildpack run, and gobis hook will wrap this command to start app on other port and run the gobis-server.
 
 **Behaviour with gobis-server**:
 
