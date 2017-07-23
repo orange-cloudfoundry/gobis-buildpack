@@ -1,6 +1,8 @@
 # Gobis-buildpack over Cloud Foundry Experimental Multi-buildpack
 
-This is a proof of concept to run a [gobis-server](https://github.com/orange-cloudfoundry/gobis-server) on top of an app.
+This is a proof of concept to run a [gobis-server](https://github.com/orange-cloudfoundry/gobis-server) on top of an app. 
+
+This is a fork from [multi-buildpack](https://github.com/cloudfoundry-incubator/multi-buildpack).
 
 App will be start on other port than the one listening by cloud foundry and gobis-server will be run on this port and forward request to the app. This permit to enrich your app without pain through gobis.
 
