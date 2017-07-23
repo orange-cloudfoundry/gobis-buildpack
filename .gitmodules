@@ -1,0 +1,3 @@
+[submodule "src/gobis-server"]
+	path = src/gobis-server
+	url = https://github.com/orange-cloudfoundry/gobis-server.git

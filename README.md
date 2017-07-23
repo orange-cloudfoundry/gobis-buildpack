@@ -1,10 +1,16 @@
-# Cloud Foundry Experimental Multi-buildpack
+# Gobis-buildpack over Cloud Foundry Experimental Multi-buildpack
 
-[![CF Slack](https://www.google.com/s2/favicons?domain=www.slack.com) Join us on Slack](https://cloudfoundry.slack.com/messages/buildpacks/)
+This is a proof of concept to run a [gobis-server](https://github.com/orange-cloudfoundry/gobis-server) on top of an app.
 
-This buildpack allows you to run multiple buildpacks in a single staging container.
+App will be start on other port than the one listening by cloud foundry and gobis-server will be run on this port and forward request to the app. This permit to enrich your app without pain through gobis.
+
+## Why it's a fork ?
+
+Multi-buildpack doesn't permit to another buildpack to hook other buildpack start commands but it does provide the logic how to do it. This only to show how we can do such a things to put an apache in front of an app, a zuul or of course a gobis-server.
 
 ## Usage
+
+**Behaviour from multi-buildpack**:
 
 - This buildpack looks for a `multi-buildpack.yml` file in the root of the application directory with structure:
 
@@ -20,6 +26,18 @@ buildpacks:
 
 - It will use the app start command given by the last buildpack run.
 
+**Behaviour with gobis-server**:
+
+- You can set a service to your app following [gobis-server on cloud foundry](https://github.com/orange-cloudfoundry/gobis-server#on-cloudfoundry)
+- If you put a `gobis-config.yml` in your root app folder routes inside will be loaded too
+- If you want to add [middleware_params](https://github.com/orange-cloudfoundry/gobis-middlewares) to the default route which will forward request to the wrapped app create a `gobis-params.yml` in your app root, example to add basic auth:
+
+```yaml
+basic_auth:
+- user: myuser
+  password: mypassword
+```
+
 ## Details
 
 - This will not work with system buildpacks. Ex. the following `multi-buildpack.yml` file will not work:
@@ -32,34 +50,6 @@ buildpacks:
 
 - The multi-buildpack will run the `bin/compile` and `bin/release` scripts for each specified buildpack.
 
-### Testing
-Buildpacks use the [Machete](https://github.com/cloudfoundry/machete) framework for running integration tests.
-
-To test a buildpack, run the following command from the buildpack's directory:
-
-```
-BUNDLE_GEMFILE=cf.Gemfile bundle exec buildpack-build
-```
-
-More options can be found on Machete's [Github page.](https://github.com/cloudfoundry/machete)
-
-### Contributing
-
-Find our guidelines [here](./CONTRIBUTING.md).
-
-### Help and Support
-
-Join the #buildpacks channel in our [Slack community](http://slack.cloudfoundry.org/) if you need any further assistance.
-
-### Reporting Issues
-
-Please fill out the issue template fully if you'd like to start an issue for the buildpack.
-
-### Active Development
-
-The project backlog is on [Pivotal Tracker](https://www.pivotaltracker.com/projects/1042066)
-
 ## Disclaimer
 
-This buildpack is intended as a proof-of-concept to generate user feedback for first class multi-buildpack support.
 It is not intended for production usage.

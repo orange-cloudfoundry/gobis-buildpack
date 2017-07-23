@@ -63,7 +63,11 @@ func main() {
 	if err != nil {
 		os.Exit(13)
 	}
-
+	err = copyGobisServer(buildpackDir, stager.BuildDir())
+	if err != nil {
+		logger.Error(err.Error())
+		os.Exit(14)
+	}
 	stager.StagingComplete()
 }
 

@@ -1,5 +1,5 @@
 ---
-language: multi
+language: gobis
 dependencies: []
 pre_package: scripts/build.sh
 exclude_files:
@@ -10,7 +10,7 @@ exclude_files:
   - log/
   - src/
   - pkg/
-  - multi_buildpack-*v*.zip
+  - gobis_buildpack-*v*.zip
   - cf.Gemfile
   - cf.Gemfile.lock
   - .DS_Store
