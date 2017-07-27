@@ -69,7 +69,8 @@ func findFreePortInRange(minport int, maxport int) int {
 	return 8081
 }
 func createGobisConf(buildDir string) error {
-	gobisConfPath := buildDir + "/gobis-config.yml"
+	rootGobisConfPath := buildDir + "/gobis-config.yml"
+	gobisConfPath := rootGobisConfPath
 	gobisParamsPath := buildDir + "/gobis-params.yml"
 
 	err := filepath.Walk(buildDir, func(path string, f os.FileInfo, err error) error {
@@ -100,7 +101,7 @@ func createGobisConf(buildDir string) error {
 		MiddlewareParams: params.Raw,
 	})
 
-	return libbuildpack.NewYAML().Write(gobisConfPath, &gobisConf)
+	return libbuildpack.NewYAML().Write(rootGobisConfPath, &gobisConf)
 }
 func copyGobisServer(buildpackDir, buildDir string) error {
 	err := createGobisConf(buildDir)
