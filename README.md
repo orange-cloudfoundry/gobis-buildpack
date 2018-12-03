@@ -88,6 +88,18 @@ cors:
   - http://localhost
 ```
 
+### How does it works ?
+
+Gobis-server running as a sidecar will do the following:
+1. Load `.gobis/route.yml` file and add only this route to gobis (`name` will be configured as `proxy-<app-name>` and `path` will be `/**`)
+2. Look for all files named as follow `.gobis/*-params.yml` and load them as middleware params to be injected in route.
+3. Get from env var `GOBIS_PORT` to know where app should listen
+4. Create route url to `http://127.0.0.1:<previous found port>`
+5. Look in `Procfile` if key `start` is found. Content is the custom command for real app that user want to override
+6. Run default launcher from cloud foundry with start command given by user if exists 
+to start real app with `PORT` env var override to previous found port 
+7. Gobis-server will listening on port expected by cloud foundry and will reverse traffic to app beside 
+
 ### Building the Buildpack
 To build this buildpack, run the following command from the buildpack's directory:
 
@@ -144,5 +156,3 @@ More information can be found on Github [cutlass](https://github.com/cloudfoundr
 ### Reporting Issues
 Open an issue on this project
 
-## Disclaimer
-This buildpack is experimental and not yet intended for production use.
