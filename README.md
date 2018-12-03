@@ -62,12 +62,14 @@ no_proxy: false
 no_buffer: false
 # Set to true to not send X-Forwarded-* headers to upstream
 remove_proxy_headers: false
-# Set to true to not check ssl certificates from upstream (not recommended)
+# Set to true to not check ssl certificates from upstream (not really recommended)
 insecure_skip_verify: false
 # Set to true to see errors on web page when there is a panic error on gobis
 show_error: false
-# It was made to pass arbitrary params to use it after in gobis middlewares
-# Here you can set cors parameters for cors middleware (see doc relative to middlewares)
+# Chain others routes in a routes
+routes: ~
+# Will forward directly to proxified route OPTIONS method without using middlewares
+options_passthrough: false
 middleware_params:
   cors:
     max_age: 12
