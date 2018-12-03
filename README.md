@@ -62,8 +62,6 @@ no_proxy: false
 no_buffer: false
 # Set to true to not send X-Forwarded-* headers to upstream
 remove_proxy_headers: false
-#  An url to an http proxy to make request to upstream pass to this
-methods: []
 # Set to true to not check ssl certificates from upstream (not recommended)
 insecure_skip_verify: false
 # Set to true to see errors on web page when there is a panic error on gobis
