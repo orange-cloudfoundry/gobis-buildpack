@@ -2,20 +2,20 @@
 language: gobis
 default_versions:
   - name: gobis-server
-    version: 1.5.x
+    version: 1.6.x
 dependency_deprecation_dates: ~
 dependencies:
   - name: gobis-server
-    version: 1.5.1
-    uri: https://github.com/orange-cloudfoundry/gobis-server/releases/download/v1.5.1/gobis-server_linux_amd64.zip
-    sha256: d426827e12ae140e9d8c97b932133342d0dd2abda0f151f74e8c07deeb12f424
+    version: 1.6.0
+    uri: https://github.com/orange-cloudfoundry/gobis-server/releases/download/v1.6.0/gobis-server_linux_amd64.zip
+    sha256: f41a4d2bcfe31e3419d5443a447c77ffb42540740bf2b2219f027ec4fb88a59e
     cf_stacks:
       - cflinuxfs2
       - cflinuxfs3
   - name: gobis-server
-    version: 1.5.1
-    uri: https://github.com/orange-cloudfoundry/gobis-server/releases/download/v1.5.1/gobis-server_windows_amd64.zip
-    sha256: 4a80c7797d6fc05e3ffbe14c79054145d0ff2d4d1e6eb6d7fe6efe46343dc910
+    version: 1.6.0
+    uri: https://github.com/orange-cloudfoundry/gobis-server/releases/download/v1.6.0/gobis-server_windows_amd64.zip
+    sha256: 1c1d1e9578665380554fffe947144cc6fa03789840012f809ff926786da522b6
     cf_stacks:
       - windows2012R2
       - windows2016
