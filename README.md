@@ -1,4 +1,7 @@
-# Gobis buildpack
+# :warning: Deprecated  in favor of [sidecars-buildpack](https://github.com/orange-cloudfoundry/sidecars-buildpack) :warning:
+
+
+### Gobis buildpack
 
 Gobis buildpack is a special buildpack to deploy a [gobis-server](https://github.com/orange-cloudfoundry/gobis-server) 
 as a [sidecar](https://blog.davemdavis.net/2018/03/13/the-sidecar-pattern/).
